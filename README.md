@@ -12,9 +12,10 @@ The goal is to understand how these factors influence academic performance and t
 
 # 📝 Survey Questions (Data Collection)
 Students are asked:
+Question form: https://docs.google.com/forms/d/e/1FAIpQLSdhQQZbxIyvydRmxXZXAxtk96xiO3X16f8TzAdr_8Gyw6KPlA/viewform?usp=dialog
 
-Điểm trung bình Toán hệ số I của bạn trong tháng 8 là bao nhiêu
-Trung bình mỗi ngày bạn dành bao nhiêu giờ tự học Toán ở nhà?
-Trung bình bạn hoàn thành bao nhiêu % bài tập Toán được giao? 
-Trong mỗi tiết học, bạn dành bao nhiêu % thời gian tập trung nghe giảng? 
-*Tập trung: Ko dùng điện thoại, ko ngủ, ghi chép đầy đủ (Ko nên đưa vào) 
+- What was your average Math score (Coefficient I) in August?
+- On average, how many hours per day do you spend self-studying Math at home?
+- On average, what percentage of assigned Math homework do you complete?
+- In each class session, what percentage of time do you spend focusing on the lesson?
+  + (Focus = not using your phone, not sleeping, taking full notes)
