@@ -30,4 +30,6 @@ Question form: https://docs.google.com/forms/d/e/1FAIpQLSdhQQZbxIyvydRmxXZXAxtk9
   + Estimate percentage of attendance at class
 - 📝 **Qualitative Data**
   + Prefered learning methods of student
-  + 
+  + Consistency of study habits (regular vs. cramming before tests)
+  + Problem-solving approach when facing difficult math tasks
+  + Frequency of self-review before assessments
