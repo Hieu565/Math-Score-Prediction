@@ -20,3 +20,14 @@ Question form: https://docs.google.com/forms/d/e/1FAIpQLSdhQQZbxIyvydRmxXZXAxtk9
 - On average, what percentage of assigned Math homework do you complete?
 - In each class session, what percentage of time do you spend focusing on the lesson?
   + (Focus = not using your phone, not sleeping, taking full notes)
+ 
+# 📊 Data Types
+
+- 🔢 **Quantitative Data**
+  + Math scores in August
+  + Average self-study hours at hour
+  + Estimate percentage of homework completion
+  + Estimate percentage of attendance at class
+- 📝 **Qualitative Data**
+  + Prefered learning methods of student
+  + 
