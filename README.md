@@ -23,6 +23,8 @@ Question form: https://docs.google.com/forms/d/e/1FAIpQLSdhQQZbxIyvydRmxXZXAxtk9
  
 # 📊 Data Types
 
+- Data source is in this link: https://docs.google.com/spreadsheets/d/1a-1Hwk_KpkGAfGQPWWlpINY8tcBKXkOlhXmfP1S6tZw/edit?usp=sharing
+
 - 🔢 **Quantitative Data**
   + Math scores in August
   + Average self-study hours at hour
