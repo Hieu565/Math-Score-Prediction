@@ -12,12 +12,11 @@ The goal is to understand how these factors influence academic performance and t
 
 # Project Structure
 student-score-prediction/
-- data/               # Collected datasets (CSV/Excel)
-- notebooks/          # Jupyter notebooks for analysis & model training
-- src/                # Python scripts (data processing, model, evaluation)
-- results/            # Graphs, evaluation metrics, predictions
-- README.md           # Project documentation
-- requirements.txt    # Python dependencies
+- data: Collected datasets (CSV/Excel)
+- notebooks: Jupyter notebooks for analysis & model training
+- src: Python scripts (data processing, model, evaluation)
+- results: Graphs, evaluation metrics, predictions
+- README.md: Project documentation
 
 # 📝 Survey Questions (Data Collection)
 Students are asked: 
@@ -30,6 +29,10 @@ Questions: Translated to English
 - On average, what percentage of assigned Math homework do you complete?
 - In each class session, what percentage of time do you spend focusing on the lesson?
   + (Focus = not using your phone, not sleeping, taking full notes)
+- What methods do you prefer to use to learn maths?
+- What methods do you use to solve difficult maths questions?
+- Do you keep a study routine for self-studying maths?
+- Do you often review before tests?
  
 # 📊 Data Types
 
