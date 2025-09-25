@@ -10,11 +10,21 @@ The goal is to understand how these factors influence academic performance and t
 - Build a predictive model (using regression) to estimate scores.
 - Generate study improvement suggestions based on the model.
 
+# Project Structure
+student-score-prediction/
+- data/               # Collected datasets (CSV/Excel)
+- notebooks/          # Jupyter notebooks for analysis & model training
+- src/                # Python scripts (data processing, model, evaluation)
+- results/            # Graphs, evaluation metrics, predictions
+- README.md           # Project documentation
+- requirements.txt    # Python dependencies
+
 # 📝 Survey Questions (Data Collection)
-Students are asked:
+Students are asked: 
 
 Question form: https://docs.google.com/forms/d/e/1FAIpQLSdhQQZbxIyvydRmxXZXAxtk96xiO3X16f8TzAdr_8Gyw6KPlA/viewform?usp=dialog
 
+Questions: Translated to English
 - What was your average Math score (Coefficient I) in August?
 - On average, how many hours per day do you spend self-studying Math at home?
 - On average, what percentage of assigned Math homework do you complete?
