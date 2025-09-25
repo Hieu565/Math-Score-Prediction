@@ -51,3 +51,30 @@ Questions: Translated to English
 
 # Initial test version
 Link of Google Colab: https://colab.research.google.com/drive/1kiy3xlwGESkbauCGqKnKfT0ZrVDcKzBq#scrollTo=8pnzuKkO87oc
+
+# 📊 Model Plan
+
+
+# 🎯 Example Use Cases
+- Predict how much a student can improve if they increase daily study hours.
+- Compare the importance of homework vs. focus in class.
+- Provide personalized suggestions (e.g., “Increase homework completion from 60% → 80% to raise score by ~8 points”).
+
+# 📌 Limitations
+
+- Data is self-reported, which may introduce bias.
+- Small dataset may not generalize to all students.
+- More features (sleep, tutoring, resources used) could improve accuracy.
+
+# ✅ Next Steps
+- Collect at least 50–100 survey responses.
+- Train the regression model.
+- Evaluate accuracy (MAE, RMSE).
+- Build a simple suggestion generator.
+
+# 🤝 Contributing
+- Fork the repo and submit pull requests.
+- Share ideas for better features and models.
+
+# 📜 License
+MIT License. Free to use and modify.
