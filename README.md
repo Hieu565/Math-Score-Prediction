@@ -69,7 +69,7 @@ Link of Google Colab: https://colab.research.google.com/drive/1kiy3xlwGESkbauCGq
 # ✅ Next Steps
 - Collect at least 50–100 survey responses.
 - Train the regression model.
-- Evaluate accuracy (MAE, RMSE).
+- Evaluate accuracy
 - Build a simple suggestion generator.
 
 # 🤝 Contributing
