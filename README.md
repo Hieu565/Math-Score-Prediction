@@ -49,9 +49,6 @@ Questions: Translated to English
   + Problem-solving approach when facing difficult math tasks
   + Frequency of self-review before assessments
 
-# Initial test version
-Link of Google Colab: https://colab.research.google.com/drive/1kiy3xlwGESkbauCGqKnKfT0ZrVDcKzBq#scrollTo=8pnzuKkO87oc
-
 # 📊 Model Plan
 
 
