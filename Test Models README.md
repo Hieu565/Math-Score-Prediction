@@ -4,7 +4,7 @@ This document provides information specific to the test models used in this proj
 
 ## 🚀 Initial Test Version
 
-- **Google Colab Link**: [Open in Colab](https://colab.research.google.com/drive/1kiy3xlwGESkbauCGqKnKfT0ZrVDcKzBq#scrollTo=8pnzuKkO87oc)
+- **Google Colab Link**: [[Open in Colab](https://colab.research.google.com/drive/1kiy3xlwGESkbauCGqKnKfT0ZrVDcKzBq#scrollTo=8pnzuKkO87oc)](https://colab.research.google.com/drive/16JZdl_nzNdl6_zma7-xrjDu9-pKF3VJO?usp=sharing)
 
 For details about the main project, please refer to the [primary README](README.md).
 
