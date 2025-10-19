@@ -36,6 +36,7 @@ Questions: Translated to English
  
 # 📊 Data Types
 
+- Number of response: 152 students
 - Data source is in this link: https://docs.google.com/spreadsheets/d/1a-1Hwk_KpkGAfGQPWWlpINY8tcBKXkOlhXmfP1S6tZw/edit?usp=sharing
 
 - 🔢 **Quantitative Data**
@@ -62,12 +63,6 @@ Questions: Translated to English
 - Data is self-reported, which may introduce bias.
 - Small dataset may not generalize to all students.
 - More features (sleep, tutoring, resources used) could improve accuracy.
-
-# ✅ Next Steps
-- Collect at least 50–100 survey responses.
-- Train the regression model.
-- Evaluate accuracy
-- Build a simple suggestion generator.
 
 # 🤝 Contributing
 - Fork the repo and submit pull requests.
