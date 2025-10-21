@@ -9,11 +9,6 @@ import optuna
 import streamlit as st
 import sklearn
 
-# load from drive
-random_forest_model_path='/content/drive/MyDrive/model_stability_results/best_random_forest_model.joblib'
-optuna_nn_model_path = '/content/drive/MyDrive/model_stability_results/optuna_neural_network_model.pth'
-preprocessor = '/content/drive/MyDrive/model_stability_results/preprocessor.pkl'
-
 # run the file again
 import requests
 
@@ -35,9 +30,6 @@ print(f"Downloaded data to {csv_file_path}")
 # Load the data from the downloaded CSV
 data = pd.read_csv(csv_file_path)
 
-# Display the first few rows to confirm
-st.write(data.head())
-
 # reconstruct optuna model
 class StudentNN(nn.Module):
   def __init__(self, input_dim, hidden1 = 56, hidden2 = 27, dropout = 0.2): # Modified hidden layer sizes
@@ -58,10 +50,10 @@ class StudentNN(nn.Module):
 device = torch.device('cpu')  # (use CPU for deployment)
 
 # preprocess
-preprocessor = joblib.load('/content/drive/MyDrive/model_stability_results/preprocessor.pkl')
+preprocessor = joblib.load("models/preprocessor.pkl")
 
 # recontruct random forest
-rf_model = joblib.load('/content/drive/MyDrive/model_stability_results/best_random_forest_model.joblib')
+rf_model = joblib.load("models/best_random_forest_model.joblib")
 
 # get input_dim from the preprocessor
 # Try to get the number of features from the preprocessor using get_feature_names_out()
@@ -79,7 +71,7 @@ except (AttributeError, TypeError):
 
 
 nn_model = StudentNN(input_dim).to(device)
-nn_model.load_state_dict(torch.load(optuna_nn_model_path, map_location=device))
+nn_model.load_state_dict(torch.load("models/optuna_neural_network_model.pth", map_location=device))
 nn_model.eval()
 
 # build hybrid model
@@ -121,8 +113,8 @@ feature_inputs = {
     "StudyHours": st.slider("Study Hours", 0.0, 24.0, 0.0, 0.5),
     "HomeworkCompletion": st.selectbox("Homework Completion", ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]),
     "AttentionLevel": st.selectbox("Attention Level", ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]),
-    "LearningMethod": st.multiselect("Learning Methods", ["Learn theory", "Do homework", "Discuss with friends", "Watch online videos"]),
     "StudyRoutines": st.selectbox("Study Routines", ["Every day", "Every week", "Only before test"]),
+    "LearningMethod": st.multiselect("Learning Methods", ["Learn theory", "Do homework", "Discuss with friends", "Watch online videos"]),
     "HandleDifficultMethod": st.multiselect("Handling Difficult Subjects", ["Use Internet or AI", "Assistance from teachers/friends", "Do on your own", "Give up"])
 }
 
