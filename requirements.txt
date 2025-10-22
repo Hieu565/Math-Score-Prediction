@@ -1,6 +1,7 @@
+streamlit
 pandas
 numpy
 joblib
 scikit-learn
-streamlit
 requests
+streamlit>=1.30.0
