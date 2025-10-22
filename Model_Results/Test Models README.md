@@ -45,3 +45,8 @@ From the RMSE Results Across Models:
 | **LinearRegression**      |  0.062 |   0.236   |   1.433  |    0.182    |       Medium        | Simple but underperforms                |
 | **Simple Neural Network** | -0.895 |   0.564   |   2.023  |    0.266    |       ❌ Low       | Unstable and overfits easily             |
 | **Optuna Neural Network** |  0.002 |   0.222   |   1.482  |    0.178    |      Moderate       | Stable but not optimal                  |
+
+## 🧾 Conclusion
+While **Random Forest (CPU)** does not yield the **highest R²**, it achieves **low variance and consistent RMSE**, marking it as the **most stable and reliable model** overall.
+In contrast, neural networks — particularly the **Simple NN** — show **high volatility and poor generalization**, likely due to inadequate tuning or small dataset size.
+Therefore, **Random Forest (CPU)** is recommended for deployment where **robustness and reliability** are prioritized over peak accuracy.
