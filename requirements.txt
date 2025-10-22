@@ -4,4 +4,4 @@ numpy
 joblib
 scikit-learn
 requests
-streamlit>=1.30.0
+streamlit==1.60.0
