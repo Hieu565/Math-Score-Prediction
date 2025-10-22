@@ -46,6 +46,16 @@ From the RMSE Results Across Models:
 | **Simple Neural Network** | -0.895 |   0.564   |   2.023  |    0.266    |       ❌ Low       | Unstable and overfits easily             |
 | **Optuna Neural Network** |  0.002 |   0.222   |   1.482  |    0.178    |      Moderate       | Stable but not optimal                  |
 
+## 🏆 Model Rating and Final Comparison
+|    Rank    | Model                     | Accuracy               | Stability           | Overall Verdict                               |
+| :--------: | :------------------------ | :--------------------- | :------------------ | :-------------------------------------------- |
+| 🥇 **1st** | **Random Forest (GPU)**   | ⭐ **Best R² & RMSE** | Very Good           | ✅ **Best Overall Performer**                 |
+| 🥈 **2nd** | **Random Forest (CPU)**   | High                   | ⭐ **Most Stable** | ✅ **Best for Consistency & Reliability**     |
+| 🥉 **3rd** | **Optuna Neural Network** | Medium-Low             | Good               | ⚙️ **Best Neural Alternative (Needs Tuning)** |
+|     4th    | Linear Regression         | Low                    | Moderate            | ⚙️ Basic baseline model                       |
+|     5th    | Decision Tree             | Low                    | Poor                | ⚠️ Overfits easily                            |
+|     6th    | Simple Neural Network     | ❌ Very Low           | ❌ Unstable         | 🚫 Not usable without major improvement       |
+  
 ## 🧩 Interpretation
 - Best Accuracy: **Random Forest (GPU)** has the **highest average R²** and **lowest RMSE**, making it technically the **top performer in predictive power**.
 - Most Stable: **Random Forest (CPU)** shows the **lowest variation** across runs (both in R² and RMSE), meaning it is the **most reliable and repeatable**.
