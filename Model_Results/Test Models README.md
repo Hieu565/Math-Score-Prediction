@@ -37,7 +37,7 @@ From the RMSE Results Across Models:
 - Simple NN fluctuated widely (1.58–2.66), confirming inconsistent training outcomes.
 
 ## 📋 Summary Table
-| Model         | Avg R² | R² StdDev | Avg RMSE | RMSE StdDev |     Stability                 | Performance Summary                       |
+| Model                     | Avg R² | R² StdDev | Avg RMSE | RMSE StdDev |    Stability        | Performance Summary                     |
 | :------------------------ | :----: | :-------: | :------: | :---------: | :-----------------: | :-------------------------------------- |
 | **RandomForest_CPU**      |  0.137 |   0.196   |   1.372  |    0.119    | ⭐**Most Stable**   | Reliable, balanced model                |
 | **RandomForest_GPU**      |  0.156 |   0.153   |   1.364  |    0.131    |        High         | Slightly higher R², similar consistency |
@@ -46,7 +46,13 @@ From the RMSE Results Across Models:
 | **Simple Neural Network** | -0.895 |   0.564   |   2.023  |    0.266    |       ❌ Low       | Unstable and overfits easily             |
 | **Optuna Neural Network** |  0.002 |   0.222   |   1.482  |    0.178    |      Moderate       | Stable but not optimal                  |
 
+## 🧩 Interpretation
+- Best Accuracy: **Random Forest (GPU)** has the **highest average R²** and **lowest RMSE**, making it technically the **top performer in predictive power**.
+- Most Stable: **Random Forest (CPU)** shows the **lowest variation** across runs (both in R² and RMSE), meaning it is the **most reliable and repeatable**.
+- Best Neural Model: **Optuna NN** is more stable than the Simple NN but does **not outperform Random Forests**.
+- Worst Model: **Simple NN** — **highly unstable, negative R², and high RMSE**.
+
 ## 🧾 Conclusion
 While **Random Forest (CPU)** does not yield the **highest R²**, it achieves **low variance and consistent RMSE**, marking it as the **most stable and reliable model** overall.
 In contrast, neural networks — particularly the **Simple NN** — show **high volatility and poor generalization**, likely due to inadequate tuning or small dataset size.
-Therefore, **Random Forest (CPU)** is recommended for deployment where **robustness and reliability** are prioritized over peak accuracy.
+Therefore, **Random Forest (CPU)** is recommended for deployment where **consistency and reliability** are prioritized over peak accuracy.
