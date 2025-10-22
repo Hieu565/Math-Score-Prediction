@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import streamlit as st
+import requests
 
 #load data cache
 @st.cache_data
@@ -21,10 +22,10 @@ data = load_google_sheet_data()
 
 
 # load models and preprocessor
-random_forest_model_path='/content/drive/MyDrive/model_stability_results/best_random_forest_model.joblib'
-rand_forest_model = joblib.load('/content/drive/MyDrive/model_stability_results/best_random_forest_model.joblib')
-preprocessor = '/content/drive/MyDrive/model_stability_results/preprocessor.pkl'
-preprocessor = joblib.load('/content/drive/MyDrive/model_stability_results/preprocessor.pkl')
+random_forest_model_path='models/best_random_forest_model.joblib'
+rand_forest_model = joblib.load(random_forest_model_path)
+preprocessor_path = 'models/preprocessor.pkl'
+preprocessor = joblib.load(preprocessor_path)
 
 # get input_dim from the preprocessor
 # Try to get the number of features from the preprocessor using get_feature_names_out()
