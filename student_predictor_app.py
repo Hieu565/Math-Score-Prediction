@@ -115,6 +115,10 @@ if st.button("Predict Score"):
     # Missing columns from training will be filled with 0
     expected_cols = list(preprocessor.feature_names_in_)
     input_df = input_df.reindex(columns=expected_cols, fill_value=0)
+
+    # debug
+    st.write("Preprocessor expects:", list(preprocessor.feature_names_in_))
+    st.write("Your input:", list(input_df.columns))
     
     # Predict current performance
     prediction = rf_model.predict(input_df)[0]
@@ -166,7 +170,3 @@ if st.button("Predict Score"):
                 st.markdown(f"- {s}")
         else:
             st.write("✅ Your study plan looks balanced! Just focus on consistency.")
-
-# debug
-st.write("Preprocessor expects:", list(preprocessor.feature_names_in_))
-st.write("Your input:", list(input_df.columns))
