@@ -81,6 +81,14 @@ input_df = pd.DataFrame([feature_inputs])
 # Predict button
 if st.button("Predict Score"):
 
+    # ✅ Encode the multiselect choices into LM_ and HD_ columns
+    input_df = encode_multiselect(input_df)
+
+    # ✅ Reindex to include all expected columns
+    # Missing columns from training will be filled with 0
+    expected_cols = list(preprocessor.feature_names_in_)
+    input_df = input_df.reindex(columns=expected_cols, fill_value=0)
+    
     # Predict current performance
     prediction = rf_model.predict(input_df)[0]
     st.success(f"✅ Predicted Student Score: **{prediction:.2f}**")
