@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import streamlit as st
+import sklearn
 import requests
 
 #load data cache
@@ -57,7 +58,7 @@ class RandomForestOnlyModel:
 rf_model = RandomForestOnlyModel(preprocessor, rand_forest_model)
 
 # build steamlit UI
-st.title("Student Performance Predictor")
+st.title("📊 Student Performance Predictor")
 
 st.write("Enter the student features below:")
 
@@ -66,28 +67,62 @@ feature_inputs = {
     "StudyHours": st.slider("Study Hours", 0.0, 24.0, 0.0, 0.5),
     "HomeworkCompletion": st.selectbox("Homework Completion", ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]),
     "AttentionLevel": st.selectbox("Attention Level", ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]),
-    "LearningMethod": st.multiselect("Learning Methods", ["Learn theory", "Do homework", "Discuss with friends", "Watch online videos"]),
+    "LearningMethod": st.multiselect("Learning Methods", ["Learn theory", "Do homework", "Discuss with friends", "Group studies", "Watch online videos", "Not studying", "Tutoring classes", "Use Internet or AI"]),
     "StudyRoutines": st.selectbox("Study Routines", ["Every day", "Every week", "Only before test"]),
-    "HandleDifficultMethod": st.multiselect("Handling Difficult Subjects", ["Use Internet or AI", "Assistance from teachers/friends", "Do on your own", "Give up"])
+    "HandleDifficultMethod": st.multiselect("Handling Difficult Questions", ["Use Internet or AI", "Assistance from teachers/friends", "Do on your own", "Give up", "Ask for tutors", "Check course book and notes"])
 }
 
 # Ask user for their target score
-target_score = st.number_input("Enter your target score (0–10):", min_value=0.0, max_value=10.0, value=0.0, step=1.0)
+target_score = st.number_input("🎯 Enter your target score (0–10):", min_value=0.0, max_value=10.0, value=0.0, step=1.0)
 
 # Convert inputs to DataFrame
 input_df = pd.DataFrame([feature_inputs])
 
+# convert multiselect lists into dummy variables (like in preprocessor)
+def encode_multiselect(input_df):
+  # All possible values learned during training
+    # ✅ All possible values learned during training (exact match)
+    learning_method_options = [
+        "Discuss with friends", "Do homework", "Group studies",
+        "Learn theory", "Not studying", "Tutoring classes",
+        "Use Internet or AI", "Watch online videos"
+    ]
+
+    handle_difficult_method_options = [
+        "Ask for tutor", "Assistance from teachers/friends",
+        "Check course books and notes", "Do on your own",
+        "Give up", "Use Internet or AI"
+    ]
+
+    # create LM_ and HD_ dummies (like in preprocessor)
+    for options in learning_method_options:
+      input_df[f"LM_{options}"] = input_df["LearningMethod"].apply(lambda x: 1 if options in x else 0)
+
+    for options in handle_difficult_method_options:
+      input_df[f"HD_{options}"] = input_df["HandleDifficultMethod"].apply(lambda x: 1 if options in x else 0)
+
+    # ✅ Remove original multiselect columns (preprocessor does NOT expect them)
+    input_df.drop(columns=["LearningMethod", "HandleDifficultMethod"], inplace=True)
+
+    return input_df
+
 # Predict button
 if st.button("Predict Score"):
+    # encoded dummies
+    input_df = encode_multiselect(input_df)
+
+    # ✅ Ensure column order & completeness
+    input_df = input_df.reindex(columns=preprocessor.feature_names_in_, fill_value=0)
+
     # Predict current performance
     prediction = rf_model.predict(input_df)[0]
-    st.success(f"Predicted Student Score: **{prediction:.2f}**")
+    st.success(f"✅ Predicted Student Score: **{prediction:.2f}**")
 
     # --- Suggestion Logic ---
-    st.subheader("Personalized Suggestions")
+    st.subheader("💡 Personalized Suggestions")
 
     if prediction >= target_score:
-        st.info("Congratulations! You’ve already reached your target performance. Keep up your good study habits!")
+        st.info("🎉 Congratulations! You’ve already reached your target performance. Keep up your good study habits!")
     else:
         gap = target_score - prediction
         st.write(f"Your target is **{target_score:.1f}**, which is **{gap:.1f} points higher** than your predicted score.")
@@ -97,36 +132,36 @@ if st.button("Predict Score"):
 
         # Based on Study Hours
         if feature_inputs["StudyHours"] < 1:
-            suggestions.append("Increase your study time to at least **1-2 hours per day** on key subjects.")
+            suggestions.append("📚 Increase your study time to at least **1-2 hours per day** on key subjects.")
         elif feature_inputs["StudyHours"] > 10:
-            suggestions.append("Consider **taking regular breaks** to maintain focus and avoid burnout.")
+            suggestions.append("🧠 Consider **taking regular breaks** to maintain focus and avoid burnout.")
 
         # Based on Homework Completion
         if feature_inputs["HomeworkCompletion"] in ["0-20%", "20-40%", "40-60%"]:
-            suggestions.append("Aim to complete **at least 80–100%** of your homework for steady improvement.")
+            suggestions.append("✏️ Aim to complete your homework more regularly **(e.g: 80-100%)** for steady improvement.")
 
         # Based on Attention Level
         if feature_inputs["AttentionLevel"] in ["0-20%", "20-40%", "40-60%"]:
-            suggestions.append("Try **shorter, more focused study sessions** or remove distractions during class.")
+            suggestions.append("🎯 Try **shorter, more focused study sessions** or remove distractions during class.")
 
         # Based on Learning Methods
         if len(feature_inputs["LearningMethod"]) < 1:
-            suggestions.append("Use **multiple learning methods** (e.g., discuss with friends or watch videos).")
+            suggestions.append("🧩 Use **multiple learning methods** (e.g., discuss with friends or watch videos).")
 
         # Based on Study Routines
-        if feature_inputs["StudyRoutines"] != "Every day":
-            suggestions.append("Try to **study daily** in shorter blocks rather than only studying before tests.")
+        if feature_inputs["StudyRoutines"] != "Only before test":
+            suggestions.append("📆 Try to **study daily** in shorter blocks rather than only studying before tests.")
 
         # Based on HandleDifficultMethod
         if "Give up" in feature_inputs["HandleDifficultMethod"]:
-            suggestions.append("Never give up! Seek **help from teachers or AI tools** when facing difficult subjects.")
+            suggestions.append("💪 Never give up! Seek **help from teachers or AI tools** when facing difficult subjects.")
         if "Do on your own" in feature_inputs["HandleDifficultMethod"] and len(feature_inputs["HandleDifficultMethod"]) == 1:
-            suggestions.append("Combine self-study with **peer or teacher support** for better understanding.")
+            suggestions.append("🤝 Combine self-study with **peer or teacher support** for better understanding.")
 
         # Show all suggestions
         if suggestions:
             for s in suggestions:
                 st.markdown(f"- {s}")
         else:
-            st.write("Your study plan looks balanced! Just focus on consistency.")
+            st.write("✅ Your study plan looks balanced! Just focus on consistency.")
 
