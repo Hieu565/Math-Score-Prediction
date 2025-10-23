@@ -81,9 +81,6 @@ input_df = pd.DataFrame([feature_inputs])
 # Predict button
 if st.button("Predict Score"):
 
-    # ✅ Ensure column order & completeness
-    input_df = input_df.reindex(columns=preprocessor.feature_names_in_, fill_value=0)
-
     # Predict current performance
     prediction = rf_model.predict(input_df)[0]
     st.success(f"✅ Predicted Student Score: **{prediction:.2f}**")
