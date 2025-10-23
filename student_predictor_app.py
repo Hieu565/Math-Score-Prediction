@@ -105,10 +105,6 @@ def encode_multiselect(input_df):
 
     return input_df
 
-# debug
-st.write("Preprocessor expects:", list(preprocessor.feature_names_in_))
-st.write("Your input:", list(input_df.columns))
-
 # Predict button
 if st.button("Predict Score"):
 
@@ -171,3 +167,6 @@ if st.button("Predict Score"):
         else:
             st.write("✅ Your study plan looks balanced! Just focus on consistency.")
 
+# debug
+st.write("Preprocessor expects:", list(preprocessor.feature_names_in_))
+st.write("Your input:", list(input_df.columns))
