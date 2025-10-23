@@ -63,7 +63,7 @@ st.write("Enter the student features below:")
 
 # Feature input definitions
 feature_inputs = {
-    "StudyHours": st.slider("Study Hours", 0.0, 7.0, 0.0, 0.5),
+    "StudyHours": st.slider("Study Hours", 0.0, 7.0, 0.0, 0.25),
     "HomeworkCompletion": st.selectbox("Homework Completion", ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]),
     "AttentionLevel": st.selectbox("Attention Level", ["0-20%", "20-40%", "40-60%", "60-80%", "80-100%"]),
     "LearningMethod": st.multiselect("Learning Methods", ["Learn theory", "Do homework", "Discuss with friends", "Group studies", "Watch online videos", "Not studying", "Tutoring classes", "Use Internet or AI"]),
