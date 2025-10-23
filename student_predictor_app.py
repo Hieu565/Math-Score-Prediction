@@ -108,8 +108,6 @@ def encode_multiselect(input_df):
 
 # Predict button
 if st.button("Predict Score"):
-    # encoded dummies
-    input_df = encode_multiselect(input_df)
 
     # ✅ Ensure column order & completeness
     input_df = input_df.reindex(columns=preprocessor.feature_names_in_, fill_value=0)
