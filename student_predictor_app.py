@@ -77,10 +77,37 @@ target_score = st.number_input("🎯 Enter your target score (0–10):", min_val
 # Convert inputs to DataFrame
 input_df = pd.DataFrame([feature_inputs])
 
+# convert multiselect lists into dummy variables (like in preprocessor)
+def encode_multiselect(input_df):
+  # All possible values learned during training
+    # ✅ All possible values learned during training (exact match)
+    learning_method_options = [
+        "Discuss with friends", "Do homework", "Group studies",
+        "Learn theory", "Not studying", "Tutoring classes",
+        "Use Internet or AI", "Watch online videos"
+    ]
+
+    handle_difficult_method_options = [
+        "Ask for tutor", "Assistance from teachers/friends",
+        "Check course books and notes", "Do on your own",
+        "Give up", "Use Internet or AI"
+    ]
+
+    # create LM_ and HD_ dummies (like in preprocessor)
+    for options in learning_method_options:
+      input_df[f"LM_{options}"] = input_df["LearningMethod"].apply(lambda x: 1 if options in x else 0)
+
+    for options in handle_difficult_method_options:
+      input_df[f"HD_{options}"] = input_df["HandleDifficultMethod"].apply(lambda x: 1 if options in x else 0)
+
+    return input_df
 
 # Predict button
 if st.button("Predict Score"):
 
+    # encoded dummies
+    input_df = encode_multiselect(input_df)
+    
     # ✅ Remove original multiselect columns (preprocessor does NOT expect them)
     input_df.drop(columns=["LearningMethod", "HandleDifficultMethod"], inplace=True)
     
