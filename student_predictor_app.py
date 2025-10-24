@@ -81,7 +81,7 @@ input_df = pd.DataFrame([feature_inputs])
 # Predict button
 if st.button("Predict Score"):
 
-    ✅ Remove original multiselect columns (preprocessor does NOT expect them)
+    # ✅ Remove original multiselect columns (preprocessor does NOT expect them)
     input_df.drop(columns=["LearningMethod", "HandleDifficultMethod"], inplace=True)
     input_df = input_df.reindex(columns=expected_cols, fill_value=0)
 
