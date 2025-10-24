@@ -74,6 +74,10 @@ feature_inputs = {
 # Ask user for their target score
 target_score = st.number_input("🎯 Enter your target score (0–10):", min_value=0.0, max_value=10.0, value=0.0, step=1.0)
 
+# ✅ Ensure list fields are always lists (even when empty)
+feature_inputs["LearningMethod"] = list(feature_inputs["LearningMethod"])
+feature_inputs["HandleDifficultMethod"] = list(feature_inputs["HandleDifficultMethod"])
+
 # Convert inputs to DataFrame
 input_df = pd.DataFrame([feature_inputs])
 
