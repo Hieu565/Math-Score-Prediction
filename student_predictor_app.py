@@ -83,6 +83,9 @@ if st.button("Predict Score"):
 
     # ✅ Remove original multiselect columns (preprocessor does NOT expect them)
     input_df.drop(columns=["LearningMethod", "HandleDifficultMethod"], inplace=True)
+    
+    # ✅ Align with training columns
+    expected_cols = list(preprocessor.feature_names_in_)
     input_df = input_df.reindex(columns=expected_cols, fill_value=0)
 
     # debug
