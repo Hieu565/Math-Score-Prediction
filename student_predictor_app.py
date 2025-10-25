@@ -150,7 +150,7 @@ if st.button("Predict Score"):
             suggestions.append("🧩 Use **multiple learning methods** (e.g., discuss with friends or watch videos).")
 
         # Based on Study Routines
-        if feature_inputs["StudyRoutines"] != "Only before test":
+        if feature_inputs["StudyRoutines"] == "Only before test":
             suggestions.append("📆 Try to **study daily** in shorter blocks rather than only studying before tests.")
 
         # Based on HandleDifficultMethod
