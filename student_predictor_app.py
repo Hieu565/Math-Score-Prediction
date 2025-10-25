@@ -114,10 +114,6 @@ if st.button("Predict Score"):
     # ✅ Align with training columns
     expected_cols = list(rf_model.model.feature_names_in_)
     input_df = input_df.reindex(columns=expected_cols, fill_value=0)
-
-    # debug
-    st.write("Preprocessor expects:", list(preprocessor.feature_names_in_))
-    st.write("Your input:", list(input_df.columns))
     
     # Predict current performance
     prediction = rf_model.predict(input_df)[0]
