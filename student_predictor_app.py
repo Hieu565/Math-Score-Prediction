@@ -43,18 +43,14 @@ except (AttributeError, TypeError):
 
 # RandomForest function
 class RandomForestOnlyModel:
-    def __init__(self, preprocessor, rf_model):
-        self.preprocessor = preprocessor
-        self.rf_model = rf_model
+    def __init__(self, pipeline_model):
+        self.model = pipeline_model  # This is the FULL pipeline model
 
     def predict(self, X):
-        X_processed = self.preprocessor.transform(X)
-        rf_pred = self.rf_model.predict(X_processed)
-        return rf_pred
-
+        return self.model.predict(X)  # ✅ No separate preprocessor call
 
 # Instantiate model
-rf_model = RandomForestOnlyModel(preprocessor, rand_forest_model)
+rf_model = RandomForestOnlyModel(rand_forest_model)
 
 # build steamlit UI
 st.title("📊 Student Performance Predictor")
